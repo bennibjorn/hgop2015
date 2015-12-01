@@ -5,5 +5,10 @@
 * nodejs     - Javascript framework
 * bower      - Svipað og npm, setur inn packages sem notandi vill
 
-Setti upp droplet þar sem tölvan mín er ekki sú besta á markaðnum.
+Setti upp droplet á digitalOcean þar sem tölvan mín er ekki sú besta á markaðnum.
 Skrifaði deployScript til að láta serverinn stoppa docker image, ná í nýjasta og keyra það af stað.
+
+Setti upp jenkins með apt-get á droplet. Startaði jenkins á porti 8081.
+"iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8081" - Leyfir mér að komast inn í jenkins með því að fara inn á IP-töluna á droplet.
+
+No idea how this jenkins works ....
