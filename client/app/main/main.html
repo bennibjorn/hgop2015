@@ -2,19 +2,28 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <h1>'Allo, 'Allo! {{ nickName }}</h1>
     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
   </div>
 </header>
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+    <div class="col-lg-6">
+        Nickname: <input type="text" ng-model="nickName">
+        Game name: <input type="text" ng-model="gameName">
+        <button class="btn" ng-click="createGame()">Create new game</button>
+        <div class="col-lg-12" ng-repeat="r in res">
+            <p>Response:</p>
+            <p> {{ r.timeStamp }} - {{ r.event }} </p>
+            <p> {{ r.id }} </p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        Game history id: <input type="text" ng-model="gameID">
+        <li class="list-group">
+            <ul class="list-group-item" ng-repeat="g in gameHistory"> {{ g }} </ul>
+        </li>
     </div>
   </div>
 </div>
