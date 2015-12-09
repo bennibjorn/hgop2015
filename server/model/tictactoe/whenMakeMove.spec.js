@@ -47,5 +47,40 @@ describe('when make move command', function(){
 
             JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         })
-    })
+    });
+    describe('on previous move', function() {
+        it('should return IllegalMove on placing move in same place', function() {
+            given.push({
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:00"
+            });
+
+            when = {
+                id: "13375",
+                comm: "MakeMove",
+                userName: "Benni",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09.T11:10:00"
+            };
+
+            then = [{
+                id: "13375",
+                event: "IllegalMove",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09.T11:10:00"
+            }];
+        });
+    });
 });
