@@ -25,7 +25,23 @@ describe('create game command', function(){
     });
 
     it('should create game with another user another time',function(){
-
+        given = [];
+        when = {
+            id: "13375",
+            gameId: "0",
+            comm: "CreateGame",
+            userName: "Benni",
+            name: "TicGame",
+            timeStamp: "2015.12.09.T10:32:00"
+        };
+        then = [{
+            id: "13375",
+            gameId: "0",
+            event: "GameCreated",
+            userName: "Benni",
+            name: "TicGame",
+            timeStamp: "2015.12.09.T10:32:00"
+        }];
 
         var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
         JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
