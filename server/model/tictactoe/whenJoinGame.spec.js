@@ -2,53 +2,53 @@ var tictactoeCommandHandler = require('./tictactoeCommandHandler');
 
 describe('join game command', function(){
 
-  var given, when, then;
+    var given, when, then;
 
-  it('should join game',function(){
-    given= [{
-      id:"1234",
-      event:"GameCreated",
-      userName: "Gulli",
-      timeStamp: "2015.12.02T11:29:44"
-    }];
-    when={
-      id:"12345",
-      comm:"JoinGame",
-      userName : "Halli",
-      name:"TheFirstGame",
-      timeStamp: "2015.12.02T11:30:50"
-    };
-    then=[{
-      id:"12345",
-      event:"GameJoined",
-      userName: "Halli",
-      otherUserName: "Gulli",
-      timeStamp: "2015.12.02T11:30:50"
-    }];
+    it('should join game',function(){
+        given= [{
+            id:"1337",
+            event:"GameCreated",
+            userName: "Benni",
+            timeStamp: "2015.12.09T10:11:00"
+        }];
+        when={
+            id:"13375",
+            comm:"JoinGame",
+            userName : "Benni",
+            name:"TicGame",
+            timeStamp: "2015.12.09T10:15:00"
+        };
+        then=[{
+            id:"13375",
+            event:"GameJoined",
+            userName: "Benni",
+            otherUserName: "Slevin",
+            timeStamp: "2015.12.09T10:15:00"
+        }];
 
-    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+        var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
 
-    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-  });
+        JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
 
-  it('should reject joining of a non-existing game',function(){
+    it('should reject joining of a non-existing game',function(){
     given= [];
     when={
-      id:"12345",
-      comm:"JoinGame",
-      userName : "Halli",
-      name:"TheFirstGame",
-      timeStamp: "2015.12.02T11:30:55"
+        id:"1337",
+        comm:"JoinGame",
+        userName : "Benni",
+        name:"AGame",
+        timeStamp: "2015.12.09T10:15:00"
     };
     then=[{
-      id:"12345",
-      event:"GameDoesNotExist",
-      userName: "Halli",
-      timeStamp: "2015.12.02T11:30:55"
+        id:"1337",
+        event:"GameDoesNotExist",
+        userName: "Benni",
+        timeStamp: "2015.12.09T10:15:00"
     }];
 
-    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+        var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
 
-    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
-  });
+        JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    });
 });
