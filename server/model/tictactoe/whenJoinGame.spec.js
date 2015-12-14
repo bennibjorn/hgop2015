@@ -12,17 +12,16 @@ describe('join game command', function(){
             timeStamp: "2015.12.09T10:11:00"
         }];
         when={
-            id:"1337",
+            id:"13375",
             comm:"JoinGame",
             userName : "Slevin",
             name:"TicGame",
             timeStamp: "2015.12.09T10:15:00"
         };
         then=[{
-            id:"1337",
+            id:"13375",
             event:"GameJoined",
             userName: "Slevin",
-            otherUserName: "Benni",
             timeStamp: "2015.12.09T10:15:00"
         }];
 

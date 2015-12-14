@@ -44,7 +44,6 @@ describe('when make move command', function(){
             }];
 
             var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
-
             JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         })
     });

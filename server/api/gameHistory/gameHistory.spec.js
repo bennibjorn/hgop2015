@@ -11,7 +11,7 @@ describe('GET /api/gameHistory', function () {
       id : "1337",
       gameId : "999",
       comm: "CreateGame",
-      userName: "Benni",
+      userName:"Benni",
       name: "TicGame",
       timeStamp: "2015-12-09T11:32:00"
     };
