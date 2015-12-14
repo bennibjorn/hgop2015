@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-3">
         Nickname: <input type="text" ng-model="nickName">
         Game name: <input type="text" ng-model="gameName">
         <button class="btn" ng-click="createGame()">Create new game</button>
@@ -19,8 +19,13 @@
             <p> {{ r.id }} </p>
         </div>
     </div>
+    <div class="col-lg-3">
+        <input type="number" ng-model="joinGameId">
+        <button class="btn" ng-click="joinGame()">Join Game</button>
+    </div>
     <div class="col-lg-6">
         Game history id: <input type="text" ng-model="gameID">
+        <button class="btn" ng-click="getGameHistory()">Get Game history</button>
         <li class="list-group">
             <ul class="list-group-item" ng-repeat="g in gameHistory"> {{ g }} </ul>
         </li>

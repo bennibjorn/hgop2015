@@ -1,17 +1,13 @@
 'use strict';
 
 angular.module('tictactoeApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, $http, $location) {
     $scope.nickName = '';
     $scope.res = [];
     $scope.gameName = '';
     $scope.gameID = '';
+    $scope.joinGameId = '';
     $scope.gameHistory = [];
-
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
 
     $scope.getGameHistory = function() {
         $http.get('/api/gameHistory/' + $scope.gameID).success(function(res) {
@@ -31,6 +27,20 @@ angular.module('tictactoeApp')
             $scope.res = res;
             $scope.gameID = res.id;
             $scope.getGameHistory();
+        });
+    };
+    $scope.joinGame = function() {
+        var data = {
+            id: $scope.joinGameId,
+            comm: 'JoinGame',
+            userName : 'Slevin',
+            name: $scope.gameName,
+            timeStamp: new Date()
+        };
+        $http.post('/api/joinGame', data). success(function(res) {
+            console.log(res);
+            console.log('joining game');
+            $location.path('/' + $scope.joinGameId);
         });
     };
 
