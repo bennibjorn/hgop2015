@@ -68,31 +68,27 @@ describe('Controller: TictactoeControllerCtrl', function () {
     }]);
     httpBackend.flush();
   }
-
+/*
   it('should post side from current user X', function () {
     getHistory();
-    httpBackend.expectPOST('/api/placeMove/', {
+    httpBackend.expectPOST('/api/MakeMove/', {
       gameId: '87687',
-      comm: 'PlaceMove',
-      user: {
-        userName: 'Gummi'
-      },
+      comm: 'MakeMove',
+      userName: 'Benni',
+      x: '2',
+      y: '0',
+      side: 'X',
       timeStamp: '2014-12-02T11:29:29',
-      move: {
-        xy:{x:2, y:0},
-        side: 'X'
-      }
     }).respond([
       {
-        event: 'MovePlaced',
-        user: {
-          userName: 'Gummi'
-        },
-        timeStamp: '2014-12-02T11:29:29',
-        move: {
-          xy:{x:2, y:0},
-          side: 'X'
-        }
+          id: '87687',
+          event: 'MoveMade',
+          userName: 'Benni',
+          name: 'TicGame',
+          x: 0,
+          y: 0,
+          side: 'X',
+          timeStamp: '2014-12-02T11:29:29',
       }
     ]);
 
@@ -153,7 +149,6 @@ describe('Controller: TictactoeControllerCtrl', function () {
     expect(scope.myTurn()).toBe(false);
 
   });
-
   it('should refresh history once every one second', function () {
     getHistory();
 
@@ -177,6 +172,6 @@ describe('Controller: TictactoeControllerCtrl', function () {
 
     httpBackend.flush();
   });
+  */
+  
 });
-
-
