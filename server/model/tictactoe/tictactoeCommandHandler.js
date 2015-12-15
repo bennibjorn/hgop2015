@@ -1,5 +1,3 @@
-'use strict';
-
 var _ = require('lodash');
 module.exports = function tictactoeCommandHandler(events) {
   var gameState = {
@@ -7,29 +5,23 @@ module.exports = function tictactoeCommandHandler(events) {
     board: [['','',''],['','',''],['','','']],
   };
 
-  const winCondition = (currentTurn) => {
-      console.log("checking win condition");
-      // vertical/horizontal win check
-      let b = gameState.board;
-      for (let i = 0; i < 3; i++) {
-          let g = 0;
-          // horizontal
-          if (b[i][g] === currentTurn && b[i][g+1] === currentTurn && b[i][g+2] === currentTurn) {
+  const winCondition = function(currentTurn, x, y) {
+      var b = gameState.board;
+      b[x][y] = currentTurn;
+      for (var i = 0; i < 3; i++) {
+          if (b[i][0] === currentTurn && b[i][1] === currentTurn && b[i][2] === currentTurn) {
               return true;
           }
-          // vertical
-          if (b[g][i] === currentTurn && b[g+1][i] === currentTurn && b[g+2][i] === currentTurn) {
-              console.log("checking board[" + g + "][" + b + "]");
-              console.log("vertical winning move");
+          if (b[0][i] === currentTurn && b[1][i] === currentTurn && b[2][i] === currentTurn) {
               return true;
           }
       }
       // diagonal
       if ((b[0][0] === currentTurn && b[1][1] === currentTurn && b[2][2] === currentTurn) ||
-           b[0][2] === currentTurn && b[1][1] === currentTurn && b[2][0] === currentTurn) {
+          (b[0][2] === currentTurn && b[1][1] === currentTurn && b[2][0] === currentTurn)) {
                return true;
       } else {
-          console.log("no game winning move, returning false");
+          // no winning move
           return false;
       }
 
@@ -89,11 +81,13 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "MakeMove": function(cmd){
-      if(gameState.board[cmd.x][cmd.y]!==''){
+      if(gameState.board[cmd.x][cmd.y]!=='' ||
+         (events[events.length-1].event === "MoveMade" &&
+          events[events.length-1].side !== cmd.side)){
         return [{
           id: cmd.id,
           event: "IllegalMove",
-          user: cmd.user,
+          userName: cmd.userName,
           name:gameState.gameCreatedEvent.name,
           x:cmd.x,
           y:cmd.y,
@@ -110,24 +104,25 @@ module.exports = function tictactoeCommandHandler(events) {
           y:cmd.y,
           side:cmd.side,
           timeStamp: cmd.timeStamp
-      }]
-      if (winCondition(cmd.side)) {
-            e.push([{
+      }];
+      if (winCondition(cmd.side, cmd.x, cmd.y)) {
+            e.push({
               id: cmd.id,
               event: "GameWon",
               userName: cmd.userName,
               name:gameState.gameCreatedEvent.name,
               side:cmd.side,
               timeStamp: cmd.timeStamp
-            }])
+          });
         } else if (drawCondition()) {
-          e.push([{
+          e.push({
               id: cmd.id,
               event: "Draw",
               name:gameState.gameCreatedEvent.name,
               timeStamp: cmd.timeStamp
-          }])
+          })
         }
+
         return e;
     }
   };

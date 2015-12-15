@@ -63,13 +63,48 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                userName: "BenniB",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "O",
+                timeStamp: "2015.12.09T11:10:00"
+            };
+
+            then = [{
+                id: "13375",
+                event: "IllegalMove",
+                userName: "BenniB",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "O",
+                timeStamp: "2015.12.09T11:10:00"
+            }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+        it('should return IllegalMove when it is not your turn', function() {
+            given.push({
+                id: "13375",
+                event: "MoveMade",
                 userName: "Benni",
+                name: "TicGame",
                 x: 0,
                 y: 0,
                 side: "X",
-                timeStamp: "2015.12.09.T11:10:00"
+                timeStamp: "2015.12.09T11:08:00"
+            });
+            when = {
+                id: "13375",
+                comm: "MakeMove",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:10:00"
             };
-
             then = [{
                 id: "13375",
                 event: "IllegalMove",
@@ -78,8 +113,10 @@ describe('when make move command', function(){
                 x: 0,
                 y: 0,
                 side: "X",
-                timeStamp: "2015.12.09.T11:10:00"
+                timeStamp: "2015.12.09T11:10:00"
             }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         });
     });
     describe('on game ending move', function() {
@@ -108,10 +145,11 @@ describe('when make move command', function(){
                 id: "13375",
                 comm: "MakeMove",
                 userName: "Benni",
+                name: "TicGame",
                 x: 0,
                 y: 2,
                 side: "X",
-                timeStamp: "2015.12.09.T11:10:02"
+                timeStamp: "2015.12.09T11:08:02"
             };
             then = [{
                 id: "13375",
@@ -129,8 +167,224 @@ describe('when make move command', function(){
                 userName: "Benni",
                 name: "TicGame",
                 side: "X",
-                timeStamp: "2015.12.09.T11:10:02"
+                timeStamp: "2015.12.09T11:08:02"
             }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+        it('should return game won on a horizontal line', function() {
+            given.push({
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:00"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 1,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            });
+            when = {
+                id: "13375",
+                comm: "MakeMove",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            };
+            then = [{
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            },
+            {
+                id: "13375",
+                event: "GameWon",
+                userName: "Benni",
+                name: "TicGame",
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+        it('should return game won on a diagonal line', function() {
+            given.push({
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:00"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 1,
+                y: 1,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            });
+            when = {
+                id: "13375",
+                comm: "MakeMove",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 2,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            };
+            then = [{
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 2,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            },
+            {
+                id: "13375",
+                event: "GameWon",
+                userName: "Benni",
+                name: "TicGame",
+                side: "X",
+                timeStamp: "2015.12.09T11:08:02"
+            }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+        });
+        it('should return game draw when board is full', function() {
+            given.push({
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:00"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 1,
+                y: 0,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 0,
+                side: "O",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 1,
+                side: "O",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 1,
+                y: 1,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 1,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 0,
+                y: 2,
+                side: "X",
+                timeStamp: "2015.12.09T11:08:01"
+            },
+            {
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 1,
+                y: 2,
+                side: "O",
+                timeStamp: "2015.12.09T11:08:01"
+            });
+            when = {
+                id: "13375",
+                comm: "MakeMove",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 2,
+                side: "O",
+                timeStamp: "2015.12.09T11:08:02"
+            };
+            then = [{
+                id: "13375",
+                event: "MoveMade",
+                userName: "Benni",
+                name: "TicGame",
+                x: 2,
+                y: 2,
+                side: "O",
+                timeStamp: "2015.12.09T11:08:02"
+            },
+            {
+                id: "13375",
+                event: "Draw",
+                name: "TicGame",
+                timeStamp: "2015.12.09T11:08:02"
+            }];
+            var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+            JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
         });
     });
 });
