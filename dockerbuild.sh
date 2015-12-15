@@ -65,7 +65,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-docker push gulli/tictactoe:$GIT_COMMIT
+docker push bennibjorn/tictactoe:$GIT_COMMIT
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
