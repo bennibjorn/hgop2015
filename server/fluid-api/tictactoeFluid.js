@@ -9,7 +9,7 @@ function given(userApi) {
     "event": "EventName",
     "userName": userApi._command.userName,
     "name": userApi._command.gameId,
-    "timeStamp": "2014-12-02T11:29:29"
+    "timeStamp": "2015-12-15T11:29:29"
   }];
   var _currentEvent = 0;
   var expectApi = {
@@ -48,7 +48,7 @@ function given(userApi) {
   return expectApi;
 }
 
-function user(userName) {
+function user(_userName) {
   var userApi = {
     _command: undefined,
     createsGame: function (gameId) {
@@ -56,15 +56,39 @@ function user(userName) {
         id: "1234",
         gameId: gameId,
         comm: "CreateGame",
-        userName: userName,
+        userName: _userName,
         name: gameId,
-        timeStamp: "2014-12-02T11:29:29"
+        timeStamp: "2015-12-15T11:29:29"
       };
       return userApi;
     },
     withId : function(gameId){
       userApi._command.gameId = gameId;
       return userApi;
+    },
+    joinsGame: function(gameId) {
+        userApi._command = {
+          id: "1234",
+          gameId: gameId,
+          comm: "JoinGame",
+          userName: _userName,
+          name: gameId,
+          timeStamp: "2015-12-15T11:29:29"
+        };
+        return userApi;
+    },
+    makesMove: function(_x, _y, _side) {
+        userApi.command = {
+            id : "123",
+            gameId : "1",
+            comm: "MakeMove",
+            userName: _userName,
+            x: _x,
+            y: _y,
+            side: _side,
+            timeStamp: "2015-12-15T11:29:29"
+        }
+        return userApi;
     }
   };
   return userApi

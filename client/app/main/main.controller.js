@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('tictactoeApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function ($scope) {
   });
