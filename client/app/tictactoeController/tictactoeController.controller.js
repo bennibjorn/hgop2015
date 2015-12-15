@@ -51,7 +51,7 @@ angular.module('tictactoeApp')
           gameId: $scope.gameState.gameId,
           comm: 'PlaceMove',
           user: $scope.me,
-          timeStamp: '2014-12-02T11:29:29',
+          timeStamp: new Date(),
           move: {
             xy: coords,
             side: mySide()
