@@ -28,7 +28,7 @@ Getum þá deployað hvaða version (sem hefur buildast) sem er með því að p
 Ætti að vera pushað strax til að tryggja að sama tag er notað.
 - Ég náði ekki að gera þetta skref nógu vel, svo að dockerbuild.sh er það sem ég notaði áður, dockerbuild_adv.sh er það sem hefði notast við þetta
 - Mig vantaði að nota deploy script betur og nota þar git tagið til að merkja docker containers
-- 
+- Einnig hefði ég sennilega átt að setja parameter á deploy til að deploya tvisvar á mismunandi port fyrir acceptance og capacity tests
 
 Jenkins scripts
 ===============
