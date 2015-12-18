@@ -38,3 +38,7 @@ Deploy/Acceptance stage
 -----------------------
 ./deploy.sh root@188.166.28.28
 ./acceptance.sh
+
+Capacity stage
+--------------
+./capacityTest.sh
