@@ -27,7 +27,7 @@ module.exports = function tictactoeCommandHandler(events) {
 
   };
 
-  const drawCondition = () => {
+  const drawCondition = function() {
       for (var i = 0; i < 3; i++) {
           for (var u = 0; u < 3; u++) {
               if (gameState.board[i][u] === '') {
