@@ -27,7 +27,8 @@ module.exports = function tictactoeCommandHandler(events) {
 
   };
 
-  const drawCondition = function() {
+  const drawCondition = function(x, y, side) {
+      gameState.board[x][y] = side;
       for (var i = 0; i < 3; i++) {
           for (var u = 0; u < 3; u++) {
               if (gameState.board[i][u] === '') {
@@ -114,7 +115,7 @@ module.exports = function tictactoeCommandHandler(events) {
               side:cmd.side,
               timeStamp: cmd.timeStamp
           });
-        } else if (drawCondition()) {
+      } else if (drawCondition(cmd.x, cmd.y, cmd.side)) {
           e.push({
               id: cmd.id,
               event: "Draw",
