@@ -25,6 +25,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -35,6 +36,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -52,6 +54,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -63,6 +66,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "BenniB",
                 name: "TicGame",
                 x: 0,
@@ -74,6 +78,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "IllegalMove",
+                gameId: "1",
                 userName: "BenniB",
                 name: "TicGame",
                 x: 0,
@@ -88,6 +93,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -98,6 +104,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -108,6 +115,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "IllegalMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -124,6 +132,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -134,6 +143,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -144,6 +154,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -154,6 +165,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -164,6 +176,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "GameWon",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 side: "X",
@@ -176,6 +189,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -186,6 +200,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 1,
@@ -196,6 +211,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -206,6 +222,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -216,6 +233,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "GameWon",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 side: "X",
@@ -228,6 +246,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -238,6 +257,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 1,
@@ -248,6 +268,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -258,6 +279,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -268,6 +290,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "GameWon",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 side: "X",
@@ -280,6 +303,7 @@ describe('when make move command', function(){
             given.push({
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -290,6 +314,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 1,
@@ -300,6 +325,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -310,6 +336,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -320,6 +347,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 1,
@@ -330,6 +358,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -340,6 +369,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 0,
@@ -350,6 +380,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 1,
@@ -360,6 +391,7 @@ describe('when make move command', function(){
             when = {
                 id: "13375",
                 comm: "MakeMove",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -370,6 +402,7 @@ describe('when make move command', function(){
             then = [{
                 id: "13375",
                 event: "MoveMade",
+                gameId: "1",
                 userName: "Benni",
                 name: "TicGame",
                 x: 2,
@@ -380,6 +413,7 @@ describe('when make move command', function(){
             {
                 id: "13375",
                 event: "Draw",
+                gameId: "1",
                 name: "TicGame",
                 timeStamp: "2015.12.09T11:08:02"
             }];
