@@ -24,7 +24,11 @@ Load testin eru keyrð samtímis en hvert test keyrir í röð == serial.
 
 Day 10
 ======
-
+Getum þá deployað hvaða version (sem hefur buildast) sem er með því að pulla frá dockerhub með réttu tag.
+Ætti að vera pushað strax til að tryggja að sama tag er notað.
+- Ég náði ekki að gera þetta skref nógu vel, svo að dockerbuild.sh er það sem ég notaði áður, dockerbuild_adv.sh er það sem hefði notast við þetta
+- Mig vantaði að nota deploy script betur og nota þar git tagið til að merkja docker containers
+- 
 
 Jenkins scripts
 ===============
