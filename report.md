@@ -41,8 +41,10 @@ bower install
 Deploy/Acceptance stage
 -----------------------
 ./deploy.sh root@188.166.28.28
+export ACCEPTANCE_URL="http://hgop.bennibjorn.me:80"
 ./acceptance.sh
 
 Capacity stage
 --------------
+export ACCEPTANCE_URL="http://hgop.bennibjorn.me:80"
 ./capacityTest.sh
