@@ -55,8 +55,15 @@ describe('TEST ENV GET /api/gameHistory', function () {
 
 
    it('Should execute fluid API test', function (done) {
-     given(user("Benni").createsGame("TicGame"))
-     .expect("GameCreated").withName("TicGame").isOk(done);
+     given(user("Benni").createsGame("TicGame").withId("1"))
+     .expect("GameCreated").withName("TicGame").withId("1").isOk(done);
+   });
+
+   it('Should play one move', function(done) {
+       given(user("Benni").createsGame("TicGame2").withId(2))
+        .and(user("Benjamin").joinsGame("TicGame2").withId(2))
+        .and(user("Benni").makesMove(0,0, "X").withId(2))
+        .expect("MoveMade").withName("TicGame2").withId(2).withUser("Benni").isOk(done);
    });
 
 });
